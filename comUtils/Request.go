@@ -5,10 +5,10 @@ import (
 	"net/http"
 )
 
-func Request(method, url string, header *http.Header, client *http.Client) *http.Response {
+func Request(method, url string) *http.Response {
 	req, _ := http.NewRequest(method, url, nil)
-	req.Header = *header
-	resp, err := client.Do(req)
+	req.Header = Header
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		log.Fatal(err)
 	}

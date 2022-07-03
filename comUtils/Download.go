@@ -3,12 +3,11 @@ package comUtils
 import (
 	"io"
 	"log"
-	"net/http"
 	"os"
 )
 
-func Download(url, path string, header *http.Header, client *http.Client) {
-	resp := Request("GET", url, header, client)
+func Download(url, path string) {
+	resp := Request("GET", url)
 	f, err := os.Create(path)
 	if err != nil {
 		log.Fatal(err)
